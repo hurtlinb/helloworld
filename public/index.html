@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World</title>
+    <style>
+      :root {
+        --bg: linear-gradient(135deg, #1e3c72 0%, #2a5298 40%, #4bc0c8 100%);
+        --card: rgba(255, 255, 255, 0.12);
+        --text: #e8f1ff;
+        --accent: #ffe66d;
+        --shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+      }
+
+      .card {
+        width: min(520px, 90vw);
+        padding: 2.5rem;
+        border-radius: 24px;
+        background: var(--card);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: var(--shadow);
+        text-align: center;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      h1 {
+        font-size: clamp(2.6rem, 5vw, 3.4rem);
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+      }
+
+      p {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        opacity: 0.95;
+        margin-bottom: 1.5rem;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.6rem 1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        margin-bottom: 1.25rem;
+      }
+
+      .pulse {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 0 rgba(255, 230, 109, 0.7);
+        animation: pulse 2s infinite;
+      }
+
+      .cta {
+        display: inline-block;
+        padding: 0.85rem 1.5rem;
+        border-radius: 14px;
+        background: #ffffff;
+        color: #12365d;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        text-decoration: none;
+        transition: transform 200ms ease, box-shadow 200ms ease;
+        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 25px 40px rgba(0, 0, 0, 0.18);
+      }
+
+      .sparkles {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        border-radius: inherit;
+      }
+
+      .sparkles::before,
+      .sparkles::after {
+        content: "";
+        position: absolute;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 60%);
+        width: 140px;
+        height: 140px;
+        filter: blur(0.4px);
+        opacity: 0.7;
+        animation: drift 9s ease-in-out infinite;
+      }
+
+      .sparkles::after {
+        width: 120px;
+        height: 120px;
+        animation-duration: 11s;
+        animation-delay: -2s;
+      }
+
+      footer {
+        margin-top: 1rem;
+        font-size: 0.95rem;
+        opacity: 0.85;
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 230, 109, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 14px rgba(255, 230, 109, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 230, 109, 0);
+        }
+      }
+
+      @keyframes drift {
+        0% {
+          transform: translate(-10%, -10%) rotate(0deg);
+        }
+        50% {
+          transform: translate(20%, 10%) rotate(12deg);
+        }
+        100% {
+          transform: translate(-12%, 8%) rotate(-8deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="sparkles" aria-hidden="true"></div>
+      <div class="badge"><span class="pulse" aria-hidden="true"></span> Hello, World !</div>
+      <h1>Bienvenue dans votre app Node.js</h1>
+      <p>
+        Ce petit serveur affiche une page élégante pour prouver que tout
+        fonctionne. Démarrez-le, ouvrez votre navigateur, et profitez d'un bonjour
+        chaleureux et stylé.
+      </p>
+      <a class="cta" href="https://nodejs.org" target="_blank" rel="noreferrer">Découvrir Node.js</a>
+      <footer>Servez et admirez en lançant <code>npm start</code>.</footer>
+    </main>
+  </body>
+</html>
